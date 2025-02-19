@@ -1,0 +1,438 @@
+<?xml version="1.0" ?>
+<odoo>
+  <data>
+    <!-- remarhit or cate -->
+    <record id="view_tree_remark_history" model="ir.ui.view">
+        <field name="name">remark.history.tree</field>
+        <field name="model">o2b.process.modular.remark.history</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="remark"/>
+                <field name="decision"/>
+                <field name="current_stage"/>
+                <field name="remark_uid"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_form_remark_history" model="ir.ui.view">
+        <field name="name">remark.history.form</field>
+        <field name="model">o2b.process.modular.remark.history</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                <field name="id"/>
+                <field name="remark"/>
+                <field name="decision"/>
+                <field name="current_stage"/>
+                <field name="remark_uid"/>
+                    </group>
+                    <notebook>
+                        <page string="Details">
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- remarhit or cate -->
+
+    <record model="ir.ui.view" id="o2b_process_modular_form">
+        <field name="name">O2B Process Modular From</field>
+        <field name="model">o2b.process.modular</field>
+        <field name="arch" type="xml">
+            <form string="O2B Drag and Drop Form">
+                <sheet>
+                <group>
+                <field name="current_user" /> 
+                <field name="process_id"/>
+                <field name="process_name"/>
+                </group>
+                <group>
+                <!-- <field name="menu_data"/> -->
+               <!--  <field name="action_data"/>
+                <field name="button_data"/> -->
+                <!-- <field name="access_right_data"/> -->
+                <field name="user_request"/>
+               <!--  <field name="model_name"/>
+                <field name="model_detail"/> -->
+                <!-- <field name="fields_data"/> -->
+                <field name="process_menu_name_list" string ="Menu Name List"/>
+                <field name="process_menu_node_list" string = "menu Id List"/>
+                <field name="auto_process_api_status" widget="boolean_toggle"/>
+                <field name="auto_process_webform_status" widget="boolean_toggle"/>
+                <field name="process_temp_url" string = "Temp Url"/>
+                 <field name="client_rule_engine_enable" widget="boolean_toggle"/>
+                <field name="registry_status" widget="boolean_toggle"/>
+
+                </group>
+                <notebook>
+                    <page string="process stage">
+                    <field name="process_stages_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <!-- <field name="process_id"/> -->
+                    <field name="process_name"/>
+                    <field name="model_name"/>
+
+                    <field name="previous_stage_id" string ="Prev Id"/>
+                    <field name="previous_stage"/>
+                    <field name="current_stage_id" string="Current Id"/>
+                    <field name="current_stage" string="Current Stage"/>
+                    <field name="activity_name" string="Stage Name"/>
+                    <field name="next_stage_id" string="Next Id"/>
+                    <field name="next_stage"/>
+                    <field name="activity_type"/>
+                    <field name="python_code"/>
+                    </tree>
+                    </field>
+                    </page>
+                    <page string="Process Decesion">
+                    <field name="process_stages_decision_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="o2b_sequence" string="Sequence"/>
+                    <field name="previous_id" string="Previos id"/>
+                    <field name="previous_stage" string="Previos stage"/>
+                    <field name="decision_name" string="Decision Name"/> 
+                    <field name="decision_id" string="Decision Id"/> 
+                    <field name="next_stage" string="Next Stage"/>
+                    <field name="next_stage_id" string="Next Stage Id"/>
+                    <field name="exception_state" string="Exception Name"/>
+                    <field name="exception_state_id" string="Exception Id"/>
+                    <field name="domain" string="Domain"/>
+                    <field name="odoo_domain" string="Parse Domain"/>
+                    </tree>
+                    </field>
+                    </page>
+
+                    <!-- for process status bar -->
+                    <page string="Process Status Bar">
+                    <field name="process_state_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="model_name"/>
+                    <field name="process_node_id"/>
+                    <field name="stage_name"/>
+                    <field name="stage_value"/>
+                    <field name="node_type"/>
+                    <field name="set_unset"/>
+                    
+                    </tree>
+                    </field>
+                    </page>
+
+                    <!-- for field method changes -->
+                    <page string="Process Field">
+                    <field name="process_stages_field_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="model_name"/>
+                    <field name="field_id" string="Field Id"/>
+                    <field name="field_name" string="Field Name"/>
+                    <field name="field_label" string="Field Label"/>
+                    <field name="field_type" string="Field Type"/>
+                    <field name="field_method" string="Field method"/>
+                    <field name="is_required" string="Required"/>
+                    <field name="activity_name" string="Form Name"/>
+                    <field name="activity_type" string="Form type"/>
+                    <field name="form_id" string="Form Id"/>
+                    <field name="default_value" string="Default"/>
+                    <field name="set_unset_value" string="Set/Unset"/>
+                    <field name="is_todo_field" string="Is Todo"/>
+                    <field name="is_document_field" string="Is Doc"/>
+                    </tree>
+                    </field>
+                    </page>
+
+                    <!-- for views data -->
+                    <page string="Process view">
+                    <field name="process_view_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="model_name"/>
+                    <field name="activity_name" string="Activity Name"/>
+                    <field name="view_id" string="View Id"/>
+                    <field name="view_name" string="Name"/>
+                    <field name="view_type" string="View type"/>
+                    <field name="view_data" string="Data"/>
+                    <field name="activity_type" string="Node type"/>
+                    <field name="node_id" string="Node Id"/>
+                    </tree>
+                    </field>
+                    </page>
+
+                    <!-- for actions data -->
+                    <page string="Process Actions">
+                    <field name="process_action_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <field name="process_name"/>
+                    <field name="model_name" string="Model"/>
+                    <field name="activity_name" string="Activity Name"/>
+                    <field name="action_id" string="Action Id"/>
+                    <field name="action_name" string="Name"/>
+                    <field name="domain" string="Domain"/>
+                    <field name="activity_type" string="Node type"/>
+                    <field name="context" string="Context"/>
+                    <field name="node_id" string="Node Id"/>
+                    </tree>
+                    </field>
+                    </page>
+
+                    <!-- for process group -->
+                    <page string="Process Group">
+                    <field name="process_group_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="model_name"/>
+                    <field name="activity_name"/>
+                    <field name="group"/>
+                    <field name="activity_type"/>
+                    <field name="node_id"/>
+                    <field name="action_id"/>
+                    <field name="menu_id"/>
+                    <field name="parent_id"/>
+                  <!--   <field name="prev_menu_name"/>
+                    <field name="curr_menu_name"/>
+                    <field name="prev_menu_id"/>
+                    <field name="status"/>
+                    <field name="count"/> -->
+                    </tree>
+                    </field>
+                    </page>
+
+                     <!-- for process menu -->
+                    <page string="Process Menu">
+                    <field name="process_menu_ids">
+                    <tree editable="bottom" create="false" delete="true">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="model_name"/>
+                    <field name="menu_name"/>
+                    <field name="menu_id"/>
+                    <field name="parent_id"/>
+                    <field name="action_id"/>
+                    <field name="node_id"/>
+                    <field name="activity_type"/>
+                    <field name="menu_type"/>
+                   <!--  <field name="pre_menu_id"/>
+                    <field name="pre_parent_menu_id"/> -->
+                    <field name="status"/>
+                    <field name="count"/>
+                    </tree>
+                    </field>
+                    </page>
+                    <!-- for process email -->
+                    <page string="Process Email">
+                    <field name="process_email_ids">
+                    <tree editable="bottom" create="false" delete="false">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="model_name"/>
+                    <field name="prev_step"/>
+                    <field name="current_step"/>
+                    <field name="current_node_id"/>
+                    <field name="next_step"/>
+                    <field name="next_step_id"/>
+                    <field name="recipient"/>
+                    <field name="mail_subject"/>
+                    <field name="mail_body"/>
+                    <field name="template_id"/>
+                    <field name="mail_trigger"/>
+                    <field name="mail_limit"/>
+                    </tree>
+                    </field>
+                    </page>
+                    <!-- for process email verified -->
+                    <page string="Process Email verified">
+                    <field name="process_email_verified_ids">
+                    <tree editable="bottom" create="false" delete="true">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="current_stage"/>
+                    <field name="current_id"/>
+                    <field name="email_verify_list"/>
+                    </tree>
+                    </field>
+                    </page>
+
+                    <!-- for process mail send view -->
+                    <page string="Process mail send">
+                    <field name="send_email_ids">
+                    <tree editable="bottom" create="false" delete="true">
+                    <field name="process_id"/>
+                    <field name="process_name"/>
+                    <field name="model"/>
+                    <field name="node_id"/>
+                    <field name="node_name"/>
+                    <field name="template_name"/>
+                    <field name="template_id"/>
+                    <field name="data"/>
+                    </tree>
+                    </field>
+                    </page>
+                </notebook>
+            </sheet>
+            </form>
+      </field>
+    </record>
+    <record id="o2b_process_modular_tree" model="ir.ui.view">
+        <field name="name">O2b Automation Process</field>
+          <field name="model">o2b.process.modular</field>
+          <field name="arch" type="xml">
+              <tree string="List of Process">
+                <field name="process_id"/>
+                <field name="process_name"/>
+                <field name="model_name"/>
+                <!-- <field name="model_detail"/>
+                <field name="fields_data"/>
+                <field name="user_name"/>
+                <field name="menu_data"/>
+                <field name="action_data"/>
+                <field name="button_data"/>
+                <field name="access_right_data"/> -->
+                <field name="user_request"/>
+                <field name="registry_status" widget="boolean_toggle"/>
+                <field name="auto_process_api_status" widget="boolean_toggle"/>
+                <field name="auto_process_webform_status" widget="boolean_toggle"/>
+                <field name="client_rule_engine_enable" widget="boolean_toggle"/>
+            </tree>
+          </field>
+      </record>
+
+    <record model="ir.actions.act_window" id="o2b_process_action">
+        <field name="name">O2B Automation Process</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">o2b.process.modular</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- Create a menu item -->
+     <menuitem id="o2b_process_menu"
+        name="Oflow"  
+        parent="base.menu_custom"
+        sequence="33"
+        groups="base.group_no_one"
+    />
+    <menuitem id="o2b_process_menu_sub"
+        name="Process Detail"  
+        parent="o2b_process_menu"
+        action="o2b_process_action"
+        sequence="12"
+        groups="base.group_no_one"
+    />
+  
+
+<!-- for process manager view -->
+ <record model="ir.ui.view" id="o2b_process_manager_form_id">
+        <field name="name">O2B Process Process Manager</field>
+        <field name="model">o2b.process.manager</field>
+        <field name="arch" type="xml">
+        <form string="O2B process Manager">
+        <field name="record_id" /> 
+        <field name="model"/>
+        <field name="model_stage"/>
+        <field name="prev_id"/>
+        </form>
+      </field>
+    </record>
+    <record id="o2b_process_manager_tree_id" model="ir.ui.view">
+        <field name="name">O2b Prcess Manager List</field>
+          <field name="model">o2b.process.manager</field>
+          <field name="arch" type="xml">
+              <tree string="Process Manager List">
+                <field name="id"/>
+                <field name="record_id"/>
+                <field name="model"/>
+                <!-- <field name="model_stage"/> -->
+                <!-- <field name="prev_id"/> -->
+                <!-- <field name="pre_name"/> -->
+                <!-- <field name="pre_type"/> -->
+                <field name="current_id"/>
+                <!-- <field name="current_name"/> -->
+                <!-- <field name="current_type"/> -->
+                <!-- <field name="next_id"/>
+                <field name="next_name"/> -->
+                <!-- <field name="next_type"/> -->
+                <field name="record_lock" widget="boolean_toggle"/>
+            </tree>
+          </field>
+      </record>
+
+    <record model="ir.actions.act_window" id="o2b_process_manager_action">
+        <field name="name">O2B Process manager</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">o2b.process.manager</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <!-- Create a menu item -->
+     <menuitem id="o2b_process_manager_menu"
+        name="Process Manager"  
+        parent="o2b_process_menu"
+        action="o2b_process_manager_action"
+        sequence="33"
+        groups="base.group_no_one"
+    />
+<!-- for process manager view -->
+
+
+<!-- for process email  view -->
+ <record model="ir.ui.view" id="o2b_process_email_form_id">
+        <field name="name">O2B Process Email Manager</field>
+        <field name="model">o2b.process.email</field>
+        <field name="arch" type="xml">
+        <form string="O2B process Email">
+        <field name="record_id" /> 
+        <field name="model"/>
+        <field name="current_id"/>
+        <field name="next_id"/>
+        <!-- <field name="attachment_ids"/> -->
+
+        </form>
+      </field>
+    </record>
+    <record id="o2b_process_emial_tree_id" model="ir.ui.view">
+        <field name="name">O2b Prcess Email List</field>
+          <field name="model">o2b.process.email</field>
+          <field name="arch" type="xml">
+              <tree string="Process Email List">
+                <field name="record_id"/>
+                <field name="model"/>
+                <field name="current_id"/>
+                <field name="next_id"/>
+                <field name="recipient"/>
+                <field name="mail_subject"/>
+                <field name="mail_body"/>
+                <field name="create_date"/>
+                <field name="mail_send_date"/>
+                <field name="attachment_ids"/>
+                <field name="mail_count"/>
+                <field name="mail_trigger"/>
+                <field name="is_sent" widget="boolean_toggle"/>
+                <field name="is_active" widget="boolean_toggle"/>
+            </tree>
+          </field>
+      </record>
+
+    <record model="ir.actions.act_window" id="o2b_process_email_action">
+        <field name="name">O2B Process Email</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">o2b.process.email</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- Create a menu item -->
+     <menuitem id="o2b_process_email_menu"
+        name="Process Email Schedule"  
+        parent="o2b_process_menu"
+        action="o2b_process_email_action"
+        sequence="34"
+        groups="base.group_no_one"
+    />
+<!-- for process manager view -->
+
+  </data>    
+</odoo>
