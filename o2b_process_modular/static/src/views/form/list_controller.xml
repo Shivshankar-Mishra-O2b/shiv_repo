@@ -1,0 +1,18 @@
+ <templates xml:space="preserve">
+    <t t-inherit="web.ListView" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[@class='o_cp_buttons']" position="inside">
+            <t t-if="props.context.o2b_module">
+                <t t-if="props.context.activity_type != 'end' and props.context.activity_type != 'discard' and props.context.activity_type != 'reject' and props.context.activity_type != 'exception' ">
+                   <t t-if="nbSelected">
+                    <button type="button"
+                        class="btn btn-outline-danger o_list_button_done"
+                        t-on-click="done"
+                        style="margin-left: 132px; margin-top: -52px;">
+                        Done
+                    </button>
+                </t>
+                </t>
+            </t>
+        </xpath>
+    </t>
+</templates>
