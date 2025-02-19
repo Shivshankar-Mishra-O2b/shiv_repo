@@ -1,0 +1,19 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_o2b_process_modular,o2b Process Modular,model_o2b_process_modular,base.group_user,1,1,1,1
+access_o2b_process_modular_stage,o2b Process Modular stage,model_o2b_process_modular_stage,base.group_user,1,1,1,1
+access_o2b_process_modular_stage_decision,o2b Process Modular stage decision,model_o2b_process_modular_stage_decision,base.group_user,1,1,1,1
+access_o2b_process_field,o2b Process Modular field,model_o2b_process_modular_field_method,base.group_user,1,1,1,1
+access_o2b_process_statusbar,o2b Process Modular statusbar,model_o2b_process_modular_statusbar,base.group_user,1,1,1,1
+access_o2b_process_remark_history,o2b Process Modular Remark History,model_o2b_process_modular_remark_history,base.group_user,1,1,1,1
+access_o2b_process_group,o2b Process Modular Group,model_o2b_process_modular_group,base.group_user,1,1,1,1
+access_o2b_process_view,o2b Process Modular view,model_o2b_process_modular_view,base.group_user,1,1,1,1
+access_o2b_process_action,o2b Process Modular Action,model_o2b_process_modular_action,base.group_user,1,1,1,1
+access_o2b_process_menu,o2b Process Modular Menu,model_o2b_process_modular_menu,base.group_user,1,1,1,1
+access_o2b_process_email,o2b Process Modular Email,model_o2b_process_modular_email,base.group_user,1,1,1,1
+access_o2b_process_manager,o2b Process Manager,model_o2b_process_manager,base.group_user,1,1,1,1
+access_o2b_schedular_email,o2b Process Email,model_o2b_process_email,base.group_user,1,1,1,1
+access_o2b_schedular_lock_table,o2b Process Lock,model_o2b_process_lock,base.group_user,1,1,1,1
+access_email_verified,o2b Email verified,model_o2b_process_modular_emailverified,base.group_user,1,1,1,1
+access_todo,o2b todo,model_o2b_todos,base.group_user,1,1,1,1
+access_documents,o2b documents,model_o2b_documents,base.group_user,1,1,1,1
+access_send_email,o2b send mails,model_o2b_send_email_template,base.group_user,1,1,1,1
