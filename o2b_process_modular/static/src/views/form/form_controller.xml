@@ -1,0 +1,37 @@
+<templates xml:space="preserve">
+    <t t-inherit="web.FormView" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='canCreate']" position="after">
+            <t t-if="props.context.o2b_module">
+               <t t-if="props.context.activity_type != 'end' and props.context.activity_type != 'discard' and props.context.activity_type != 'reject' and props.context.activity_type != 'exception' ">
+                    <button type="button"
+                        class="btn btn-outline-danger o_form_button_done"
+                        t-on-click="done"
+                        data-hotkey="d"
+                        style="margin-left:10px;margin-right:10px;">
+                        Done
+                    </button>
+                </t>
+            </t>
+        </xpath>
+    </t>
+</templates>
+
+<!-- before today backcode in below lines -->
+
+<!-- <templates xml:space="preserve">
+    <t t-inherit="web.FormView" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='canCreate']" position="after">
+            <t>
+                <button type="button"
+                    class="btn btn-outline-danger o_form_button_done"
+                    t-on-click="done"
+                    data-hotkey="d"
+                    style="margin-left:10px;margin-right:10px;">
+                    Done
+                </button>
+            </t>
+        </xpath>
+    </t>
+</templates>
+ -->
+
